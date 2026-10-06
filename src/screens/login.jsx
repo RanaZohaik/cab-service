@@ -4,19 +4,45 @@ import {
   TextInput,
   View,
   TouchableOpacity,
+  Alert,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 
-const login = () => {
+const login = ({ navigation }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const mockuser = {
+    email: "user@gmail.com",
+    password: "1234",
+  };
+
+  const handleLogin = () => {
+    if (email == mockuser.email && password == mockuser.password) {
+      navigation.navigate("Home");
+    } else {
+      Alert.alert("Login Failed");
+    }
+  };
+
   return (
     <View style={styles.Container}>
       <Text style={styles.text}>Sign In</Text>
-      <TextInput style={styles.input} placeholder="Email" />
-      <TextInput style={styles.input} placeholder="Password" secureTextEntry />
-      <TouchableOpacity
-        onPress={() => navigation.navigate("WelcomeScreen")}
-        style={styles.sbutton}
-      >
+      <TextInput
+        style={styles.input}
+        placeholder="Email"
+        value={email}
+        onChangeText={setEmail}
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Password"
+        secureTextEntry
+        value={password}
+        onChangeText={setPassword}
+      />
+      <TouchableOpacity onPress={handleLogin} style={styles.sbutton}>
+      
         <Text style={styles.sbuttontext}>Sign In</Text>
       </TouchableOpacity>
     </View>
