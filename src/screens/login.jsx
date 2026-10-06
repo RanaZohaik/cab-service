@@ -5,15 +5,17 @@ import {
   View,
   TouchableOpacity,
   Alert,
+  Pressable,
 } from "react-native";
 import React, { useState } from "react";
+import Signup from "./Signup";
 
 const login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const mockuser = {
-    email: "user@gmail.com",
+    email: "rana@gmail.com",
     password: "1234",
   };
 
@@ -41,8 +43,10 @@ const login = ({ navigation }) => {
         value={password}
         onChangeText={setPassword}
       />
+      <Pressable onPress={() => navigation.navigate("ForgotPassword")}>
+        <Text style={styles.forgotPassword}>Forgot Password?</Text>
+      </Pressable>
       <TouchableOpacity onPress={handleLogin} style={styles.sbutton}>
-      
         <Text style={styles.sbuttontext}>Sign In</Text>
       </TouchableOpacity>
     </View>
@@ -83,5 +87,13 @@ const styles = StyleSheet.create({
   sbuttontext: {
     color: "white",
     textAlign: "center",
+  },
+  forgotPassword: {
+    textDecorationLine: "underline",
+    color: "#EAA315",
+    alignSelf: "flex-start",
+    marginBottom: 10,
+    width: 310,
+    fontSize: 12,
   },
 });

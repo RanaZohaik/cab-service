@@ -1,18 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
 
-const HomeScreen = () => {
+const ForgetPassword = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>HomeScreen</Text>
+      <Text style={styles.text}>Forget Password</Text>
     </View>
-  )
-}
+  );
+};
 
-export default HomeScreen
+export default ForgetPassword;
 
 const styles = StyleSheet.create({
-    container: {
+  container: {
     flex: 1,
     alignContent: "center",
     justifyContent: "center",
@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 20,
   },
-})
+});
