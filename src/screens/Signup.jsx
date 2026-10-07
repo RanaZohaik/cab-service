@@ -12,22 +12,29 @@ const Signup = ({ navigation }) => {
   const [name, setName] = useState("Rana Zohaik");
   const [email, setEmail] = useState("rana@example.com");
   const [gender, setGender] = useState("male");
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Signup</Text>
+      <Text style={styles.title}>Create Account</Text>
+      <Text style={styles.subtitle}>Sign up to get started</Text>
+
+      <Text style={styles.label}>Name</Text>
       <TextInput
-        placeholder="Name"
+        placeholder="Enter your name"
         value={name}
         onChangeText={setName}
         style={styles.input}
       />
+
+      <Text style={styles.label}>Email</Text>
       <TextInput
-        placeholder="Email"
+        placeholder="Enter your email"
         value={email}
         onChangeText={setEmail}
         style={styles.input}
       />
 
+      <Text style={styles.label}>Gender</Text>
       <View style={styles.dropdown}>
         <Picker
           selectedValue={gender}
@@ -40,64 +47,72 @@ const Signup = ({ navigation }) => {
       </View>
 
       <TouchableOpacity
-        style={styles.sbutton}
-        onPress={() => navigation.navigate("Home")}
+        style={styles.button}
+        onPress={() => navigation.navigate("otpscreen")}
       >
-        <Text style={styles.sbuttontext}>Sign Up</Text>
+        <Text style={styles.buttonText}>Sign Up</Text>
       </TouchableOpacity>
     </View>
   );
 };
+
 export default Signup;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignContent: "center",
     justifyContent: "center",
-    padding: 20,
+    padding: 25,
+    backgroundColor: "#fff",
   },
-  input: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 10,
-  },
-  label: {
-    fontSize: 16,
+
+  title: {
+    fontSize: 30,
     fontWeight: "bold",
+    textAlign: "center",
     marginBottom: 5,
   },
+
+  subtitle: {
+    fontSize: 15,
+    color: "gray",
+    textAlign: "center",
+    marginBottom: 30,
+  },
+
+  label: {
+    fontSize: 15,
+    fontWeight: "600",
+    marginBottom: 6,
+  },
+
+  input: {
+    borderWidth: 1,
+    borderColor: "#ddd",
+    borderRadius: 8,
+    padding: 12,
+    marginBottom: 18,
+    fontSize: 15,
+  },
+
   dropdown: {
     borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 10,
+    borderColor: "#ddd",
+    borderRadius: 8,
+    marginBottom: 25,
+    overflow: "hidden",
   },
-  text: {
-    fontSize: 20,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginBottom: 20,
-  },
-  sbutton: {
+
+  button: {
     backgroundColor: "#EAA315",
-    padding: 10,
-    borderRadius: 5,
-    width: "100%",
-    alignSelf: "center",
-    marginBottom: 20,
+    padding: 14,
+    borderRadius: 8,
   },
-  sbuttontext: {
+
+  buttonText: {
     color: "white",
     textAlign: "center",
-  },
-  dropdown: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 5,
-    marginBottom: 10,
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });
