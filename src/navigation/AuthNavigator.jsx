@@ -4,12 +4,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import WelcomeScreen from "../screens/WelcomeScreen";
 import SignUp from "../screens/Signup";
-import login from "../screens/login";
-import HomeScreen from "../screens/HomeScreen";
+import Login from "../screens/login";
 import ForgetPassword from "../screens/ForgetPassword";
-import otpscreen from "../screens/otpscreen";
+import Otpscreen from "../screens/otpscreen";
 import SetPassword from "../screens/SetPassword";
-import HomeNavigator from "./HomeNavigator";
+
+import MainDrawerNavigator from "./MainDrawerNavigator";
 
 const Stack = createNativeStackNavigator();
 
@@ -25,10 +25,13 @@ const AuthNavigator = () => {
       >
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="login" component={login} />
-        <Stack.Screen name="Home" component={HomeNavigator} />
+        <Stack.Screen name="login" component={Login} />
+
+        <Stack.Screen name="Home" component={MainDrawerNavigator} />
+
         <Stack.Screen name="ForgotPassword" component={ForgetPassword} />
-        <Stack.Screen name="otpscreen" component={otpscreen} />
+
+        <Stack.Screen name="otpscreen" component={Otpscreen} />
         <Stack.Screen name="SetPassword" component={SetPassword} />
       </Stack.Navigator>
     </NavigationContainer>

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import {
+  Alert,
   StyleSheet,
   Text,
   View,
@@ -7,38 +8,69 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { DrawerActions } from "@react-navigation/native";
 
-const HomeScreen = () => {
-  
+const HomeScreen = ({ navigation }) => {
+  const searchInputRef = useRef(null);
+  const [selectedOption, setSelectedOption] = useState("transport");
+  const [isRentalSelected, setIsRentalSelected] = useState(false);
+
+  const openSidebar = () => {
+    navigation.dispatch(DrawerActions.openDrawer());
+  };
+
+  const focusSearch = () => {
+    searchInputRef.current?.focus();
+  };
+
+  const showNotifications = () => {
+    Alert.alert("Notifications", "You have no new notifications.");
+  };
 
   return (
     <View style={styles.container}>
-  
       <View style={styles.mapArea}>
-      
-        <TouchableOpacity style={styles.menuButton}>
+        <TouchableOpacity
+          style={styles.menuButton}
+          onPress={openSidebar}
+          accessibilityLabel="Open navigation menu"
+          accessibilityRole="button"
+        >
           <Ionicons name="menu" size={25} color="#555" />
         </TouchableOpacity>
 
         <View style={styles.topRight}>
-          <TouchableOpacity style={styles.smallButton}>
+          <TouchableOpacity
+            style={styles.smallButton}
+            onPress={focusSearch}
+            accessibilityLabel="Search for a destination"
+            accessibilityRole="button"
+          >
             <Ionicons name="search" size={20} color="#555" />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.smallButton}>
+          <TouchableOpacity
+            style={styles.smallButton}
+            onPress={showNotifications}
+            accessibilityLabel="Show notifications"
+            accessibilityRole="button"
+          >
             <Ionicons name="notifications-outline" size={20} color="#555" />
           </TouchableOpacity>
         </View>
 
-        <View>
-          <View>
-            <View>
-              <Ionicons name="location" size={20} color="#555" />
-            </View>
-          </View>
-        </View>
+     
 
-        <TouchableOpacity style={styles.rentalButton}>
+        <TouchableOpacity
+          style={[
+            styles.rentalButton,
+            isRentalSelected && styles.rentalButtonSelected,
+          ]}
+          onPress={() => setIsRentalSelected((selected) => !selected)}
+          accessibilityLabel="Toggle rental service"
+          accessibilityRole="button"
+          accessibilityState={{ selected: isRentalSelected }}
+        >
           <Text style={styles.rental}>Rental</Text>
         </TouchableOpacity>
 
@@ -47,21 +79,58 @@ const HomeScreen = () => {
             <Ionicons name="search-outline" size={20} color="#777" />
 
             <TextInput
+              ref={searchInputRef}
               style={styles.searchInput}
               placeholder="Where would you go?"
               placeholderTextColor="#999"
+              returnKeyType="search"
+              accessibilityLabel="Destination"
             />
 
             <Ionicons name="heart-outline" size={20} color="#999" />
           </View>
 
           <View style={styles.optionsContainer}>
-            <TouchableOpacity style={styles.transportButton}>
-              <Text style={styles.selectedText}>Transport</Text>
+            <TouchableOpacity
+              style={[
+                styles.transportButton,
+                selectedOption !== "transport" && styles.unselectedButton,
+              ]}
+              onPress={() => setSelectedOption("transport")}
+              accessibilityLabel="Select transport"
+              accessibilityRole="button"
+              accessibilityState={{ selected: selectedOption === "transport" }}
+            >
+              <Text
+                style={
+                  selectedOption === "transport"
+                    ? styles.selectedText
+                    : styles.optionText
+                }
+              >
+                Transport
+              </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.deliveryButton}>
-              <Text style={styles.optionText}>Delivery</Text>
+            <TouchableOpacity
+              style={[
+                styles.deliveryButton,
+                selectedOption === "delivery" && styles.selectedButton,
+              ]}
+              onPress={() => setSelectedOption("delivery")}
+              accessibilityLabel="Select delivery"
+              accessibilityRole="button"
+              accessibilityState={{ selected: selectedOption === "delivery" }}
+            >
+              <Text
+                style={
+                  selectedOption === "delivery"
+                    ? styles.selectedText
+                    : styles.optionText
+                }
+              >
+                Delivery
+              </Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -126,6 +195,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
+  rentalButtonSelected: {
+    backgroundColor: "#D99800",
+  },
+
   rental: {
     color: "white",
     fontSize: 15,
@@ -171,6 +244,29 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
 
+  locationMarker: {
+    position: "absolute",
+    top: "42%",
+    left: "50%",
+    marginLeft: -19,
+    marginTop: -19,
+    width: 38,
+    height: 38,
+    borderRadius: 19,
+    backgroundColor: "rgba(255, 185, 0, 0.2)",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
+  locationDot: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    backgroundColor: "#FFB900",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+
   transportButton: {
     flex: 1,
     backgroundColor: "#FFB900",
@@ -185,11 +281,22 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 
+  selectedButton: {
+    backgroundColor: "#FFB900",
+  },
+
+  unselectedButton: {
+    backgroundColor: "#FFFDF2",
+  },
+
   selectedText: {
     color: "white",
     fontSize: 14,
     fontWeight: "600",
   },
 
-
+  optionText: {
+    color: "#555",
+    fontSize: 14,
+  },
 });
