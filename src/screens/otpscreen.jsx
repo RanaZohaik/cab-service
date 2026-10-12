@@ -43,7 +43,9 @@ const OTPScreen = ({ navigation }) => {
       <TouchableOpacity>
         <Text style={styles.resend}>Resend OTP</Text>
       </TouchableOpacity>
+      
     </View>
+    
   );
 };
 
