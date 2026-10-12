@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: "80%",
     alignSelf: "center",
-    marginBottom: 20,
+    marginBottom: 21,
   },
   sbuttontext: {
     color: "white",

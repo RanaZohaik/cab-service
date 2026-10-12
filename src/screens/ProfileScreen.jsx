@@ -56,6 +56,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 23,
     fontWeight: "bold",
+    textAlign: "center",
+    marginBottom: 25,
   },
   picture: {
     width: 100,
@@ -74,7 +76,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 15,
-    marginBottom: 7,
+    marginBottom: 8,
     color: "#333",
   },
   input: {
