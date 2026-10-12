@@ -1,4 +1,3 @@
-
 import {
   StyleSheet,
   Text,
@@ -51,10 +50,7 @@ const SetPassword = ({ navigation }) => {
         onChangeText={setConfirmPassword}
       />
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={handleSetPassword}
-      >
+      <TouchableOpacity style={styles.button} onPress={handleSetPassword}>
         <Text style={styles.buttonText}>Set Password</Text>
       </TouchableOpacity>
     </View>

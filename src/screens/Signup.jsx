@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
 
   dropdown: {
     borderWidth: 1,
-    borderColor: "#ddd",
+    borderColor: "#dfdfdf",
     borderRadius: 8,
     marginBottom: 25,
     overflow: "hidden",

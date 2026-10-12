@@ -55,11 +55,9 @@ const HomeScreen = ({ navigation }) => {
             accessibilityLabel="Show notifications"
             accessibilityRole="button"
           >
-            <Ionicons name="notifications-outline" size={20} color="#555" />
+            <Ionicons name="notifications-outline" size={20} color="#575555" />
           </TouchableOpacity>
         </View>
-
-     
 
         <TouchableOpacity
           style={[

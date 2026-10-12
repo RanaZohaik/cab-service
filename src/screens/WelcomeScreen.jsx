@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
   sbutton: {
     borderWidth: 1.5,
-    borderColor: "#EAA315",
+    borderColor: "#eaa315",
     padding: 14,
     borderRadius: 8,
     alignItems: "center",

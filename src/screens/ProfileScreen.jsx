@@ -18,7 +18,7 @@ const ProfileScreen = () => {
       <Text style={styles.title}>My Profile</Text>
 
       <View style={styles.picture}>
-        <Ionicons name="person" size={50} color="#555" />
+        <Ionicons name="person" size={50} color="#575555" />
       </View>
 
       <Text style={styles.name}>Your Name</Text>
