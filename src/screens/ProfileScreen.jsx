@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     fontSize: 23,
     fontWeight: "bold",
     textAlign: "center",
-    marginBottom: 25,
+    marginBottom: 26,
   },
   picture: {
     width: 100,
