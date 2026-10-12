@@ -11,7 +11,7 @@ const OTPScreen = ({ navigation }) => {
   const [otp, setOtp] = useState("");
 
   const verifyOTP = () => {
-    if (otp === "1234") {
+    if (otp === "12345") {
       alert("OTP Verified Successfully");
       navigation.navigate("SetPassword");
     } else {
