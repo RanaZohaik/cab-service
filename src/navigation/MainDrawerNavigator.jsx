@@ -2,11 +2,12 @@ import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import HomeNavigator from "./HomeNavigator";
-import Profile from "../screens/Profile";
+import Profile from "../screens/ProfileScreen";
 import Settings from "../screens/Settings";
 import CustomDrawerContent from "./CustomDrawerContent";
 import Favorites from "../screens/Favorites";
 import Wallet from "../screens/Wallet";
+import ProfileScreen from "../screens/ProfileScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -38,7 +39,7 @@ const MainDrawerNavigator = () => {
 
       <Drawer.Screen
         name="EditProfile"
-        component={Profile}
+        component={ProfileScreen}
         options={{ drawerLabel: "Edit Profile" }}
       />
 
